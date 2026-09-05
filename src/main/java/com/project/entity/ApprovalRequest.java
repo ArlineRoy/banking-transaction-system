@@ -42,6 +42,69 @@ public class ApprovalRequest {
         }
     }
 
-    // getters, setters
+    public ApprovalRequest() {
+    }
+
+    // Convenience constructor
+    public ApprovalRequest(Transactions transaction) {
+        this.transaction = transaction;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public Transactions getTransaction() {
+        return transaction;
+    }
+
+    public void setTransaction(Transactions transaction) {
+        this.transaction = transaction;
+    }
+
+    public ApprovalStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ApprovalStatus status) {
+        this.status = status;
+    }
+
+    public UserEntity getReviewedBy() {
+        return reviewedBy;
+    }
+
+    public void setReviewedBy(UserEntity reviewedBy) {
+        this.reviewedBy = reviewedBy;
+    }
+
+    public String getReviewNote() {
+        return reviewNote;
+    }
+
+    public void setReviewNote(String reviewNote) {
+        this.reviewNote = reviewNote;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Instant getReviewedAt() {
+        return reviewedAt;
+    }
+
+    public void setReviewedAt(Instant reviewedAt) {
+        this.reviewedAt = reviewedAt;
+    }
 }
+
 

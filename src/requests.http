@@ -1,0 +1,60 @@
+### GET request to example server
+GET https://examples.http-client.intellij.net/get
+    ?generated-in=IntelliJ IDEA
+
+###
+### Register a new user
+POST http://localhost:8080/auth/register
+Content-Type: application/json
+
+{
+  "name": "Arliner Test",
+  "email": "arline@test123.com",
+  "password": "testpass123"
+}
+
+### Try registering the SAME email again — should fail with 409
+POST http://localhost:8080/auth/register
+Content-Type: application/json
+
+{
+  "name": "Arline Test",
+  "email": "arline@test.com",
+  "password": "testpass123"
+}
+
+### Login with correct credentials
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+  "email": "arline@test.com",
+  "password": "testpass123"
+}
+
+### Login with WRONG password — should fail with 401
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+  "email": "arline@test.com",
+  "password": "wrongpassword"
+}
+
+### Protected endpoint WITH a valid token — paste your real access token below
+GET http://localhost:8080/api/test
+Authorization: Bearer
+eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhcmxpbmVAdGVzdDEyMy5jb20iLCJpYXQiOjE3ODc0MjUyMjMsImV4cCI6MTc4NzQyNjEyM30.-fjhRBOudZsfUaBlA8dYgWP-1fCgK256TFoqTGYb-l4
+
+### Protected endpoint with NO token — should fail with 401/403
+GET http://localhost:8080/api/test
+
+### Protected endpoint with a garbage/malformed token — should fail cleanly
+GET http://localhost:8080/api/test
+Authorization: Bearer garbage.invalid.token
+
+### Refresh — paste your real refresh token below
+POST http://localhost:8080/auth/refresh
+Content-Type: application/json
+
+"PASTE_REFRESH_TOKEN_HERE"

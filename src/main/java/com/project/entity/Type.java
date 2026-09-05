@@ -2,6 +2,6 @@ package com.project.entity;
 
 public enum Type{
     DEPOSIT,
-    WITHDRAWL,
+    WITHDRAWAL,
     TRANSFER       
 }
